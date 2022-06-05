@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        multimap <int,int> m;
+        
+        for(int i=0;i<matrix.size();i++)
+        { 
+            for(int j=0;j<matrix[0].size();j++)
+            {   
+                if(matrix[i][j]==0)
+                {
+                    cout<<i<<j;
+                    m.insert({i,j});
+                }
+            }
+        }
+        
+        for(map<int,int>::const_iterator it=m.begin();it!=m.end();it++)
+        {   cout<<it->first<<it->second;
+            for(int k=0;k<matrix[0].size();k++)
+                matrix[it->first][k]=0;
+            for(int k=0;k<matrix.size();k++)
+                matrix[k][it->second]=0;
+        }
+        
+    }
+};
